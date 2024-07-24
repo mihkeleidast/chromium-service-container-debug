@@ -13,6 +13,7 @@ jobs:
     services:
       puppeteer:
         image: zenika/alpine-chrome:124
+        options: --cap-add=SYS_ADMIN --init
         ports:
           - 9222:9222
         env:
