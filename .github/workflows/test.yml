@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     services:
       puppeteer:
-        image: zenika/alpine-chrome:102
+        image: zenika/alpine-chrome:108
         options: --cap-add=SYS_ADMIN
         ports:
           - 9222:9222
