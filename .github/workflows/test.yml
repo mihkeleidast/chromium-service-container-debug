@@ -31,5 +31,6 @@ jobs:
             --font-render-hinting=medium
             --use-gl=swiftshader
     steps:
+      - run: sleep 10s
       - run: docker ps
       - run: curl http://127.0.0.1:9222/json/version
