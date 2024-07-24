@@ -1,0 +1,1 @@
+Testing if running zenika/alpine-chrome in a service container works with default GitHub Cloud actions runners.

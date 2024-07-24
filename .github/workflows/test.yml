@@ -1,0 +1,32 @@
+name: test
+on:
+  push:
+    branches:
+      - main
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  test:
+    name: run test
+    runs-on: ubuntu-latest
+    services:
+      puppeteer:
+        image: zenika/alpine-chrome:122
+        ports:
+          - 9222:9222
+        env:
+          CHROMIUM_FLAGS: >-
+            --headless
+            --disable-gpu
+            --disable-software-rasterizer
+            --no-sandbox
+            --remote-debugging-address=0.0.0.0
+            --remote-debugging-port=9222
+            --disable-setuid-sandbox
+            --disable-dev-shm-usage
+            --single-process
+            --hide-scrollbars
+            --font-render-hinting=medium
+    steps:
+      - run: curl http://127.0.0.1:9222/json/version
