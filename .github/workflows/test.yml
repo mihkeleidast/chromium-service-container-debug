@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     services:
       puppeteer:
-        image: zenika/alpine-chrome:102
+        image: zenika/alpine-chrome:108
         options: --cap-add=SYS_ADMIN
         ports:
           - 9222:9222
@@ -32,5 +32,5 @@ jobs:
             --use-gl=swiftshader
     steps:
       - run: sleep 10s
-      - run: docker ps
+      - run: docker ps -a
       - run: curl http://127.0.0.1:9222/json/version
