@@ -29,5 +29,6 @@ jobs:
             --single-process
             --hide-scrollbars
             --font-render-hinting=medium
+            --use-gl=swiftshader
     steps:
       - run: curl http://127.0.0.1:9222/json/version
