@@ -12,11 +12,8 @@ jobs:
     runs-on: ubuntu-latest
     services:
       puppeteer:
-        image: ghcr.io/puppeteer/puppeteer:22.13.1
-        options: --cap-add=SYS_ADMIN
-        credentials:
-          username: 'mihkeleidast'
-          password: ${{ secrets.GITHUB_TOKEN }}
+        image: zenika/alpine-chrome:124
+        options: -it --cap-add=SYS_ADMIN --entrypoint /bin/sh
         ports:
           - 9222:9222
         env:
