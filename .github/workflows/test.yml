@@ -16,7 +16,7 @@ jobs:
         options: --cap-add=SYS_ADMIN
         credentials:
           username: 'mihkeleidast'
-          password: ${{ secrets.GCR_TOKEN}}
+          password: ${{ secrets.GITHUB_TOKEN }}
         ports:
           - 9222:9222
         env:
