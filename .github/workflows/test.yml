@@ -12,8 +12,11 @@ jobs:
     runs-on: ubuntu-latest
     services:
       puppeteer:
-        image: zenika/alpine-chrome:124
+        image: ghcr.io/puppeteer/puppeteer:22.13.1
         options: --cap-add=SYS_ADMIN
+        credentials:
+          username: 'mihkeleidast'
+          password: ${{ secrets.GCR_TOKEN}}
         ports:
           - 9222:9222
         env:
@@ -30,7 +33,6 @@ jobs:
             --single-process
             --hide-scrollbars
             --font-render-hinting=medium
-            --use-gl=swiftshader
     steps:
       - run: sleep 10s
       - run: docker ps -a
