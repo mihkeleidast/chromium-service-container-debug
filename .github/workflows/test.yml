@@ -13,7 +13,7 @@ jobs:
     services:
       puppeteer:
         image: zenika/alpine-chrome:124
-        options: -it --cap-add=SYS_ADMIN --entrypoint /bin/sh
+        options: -it --cap-add=SYS_ADMIN --entrypoint chromium-browser
         ports:
           - 9222:9222
         env:
