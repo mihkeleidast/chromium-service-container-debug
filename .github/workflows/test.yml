@@ -10,27 +10,8 @@ jobs:
   test:
     name: run test
     runs-on: ubuntu-latest
-    services:
-      puppeteer:
-        image: zenika/alpine-chrome:124
-        options: -it --cap-add=SYS_ADMIN --entrypoint="[\"chromium-browser\", \"--headless\"]"
-        ports:
-          - 9222:9222
-        env:
-          CHROMIUM_FLAGS: >-
-            --log-level=0
-            --headless
-            --disable-gpu
-            --disable-software-rasterizer
-            --no-sandbox
-            --remote-debugging-address=0.0.0.0
-            --remote-debugging-port=9222
-            --disable-setuid-sandbox
-            --disable-dev-shm-usage
-            --single-process
-            --hide-scrollbars
-            --font-render-hinting=medium
     steps:
+      - run: docker run -p 9222:9222 -d zenika/alpine-chrome:122 --font-render-hinting=medium --hide-scrollbars --no-sandbox --disable-setuid-sandbox --disable-dev-shm-usage --single-process --remote-debugging-address=0.0.0.0 --remote-debugging-port=9222
       - run: sleep 10s
       - run: docker ps -a
       - run: curl http://127.0.0.1:9222/json/version
